@@ -89,13 +89,13 @@
 
 <meta name="description" content="文章访问密码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS-UIButton">
-<meta property="og:url" content="http://yoursite.com/2015/03/24/iOS-UIButton/index.html">
+<meta property="og:title" content="iOS-UIScreenEdgePanGestureRecognizer">
+<meta property="og:url" content="http://yoursite.com/2017/03/29/iOS-RuntimeUIScreenEdgePanGestureRecognizer/index.html">
 <meta property="og:site_name" content="德玛西亚">
 <meta property="og:description" content="文章访问密码">
-<meta property="og:updated_time" content="2017-03-24T15:27:03.000Z">
+<meta property="og:updated_time" content="2017-03-29T13:14:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS-UIButton">
+<meta name="twitter:title" content="iOS-UIScreenEdgePanGestureRecognizer">
 <meta name="twitter:description" content="文章访问密码">
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/03/24/iOS-UIButton/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/29/iOS-RuntimeUIScreenEdgePanGestureRecognizer/"/>
 
 
 
 
 
-  <title> iOS-UIButton | 德玛西亚 </title>
+  <title> iOS-UIScreenEdgePanGestureRecognizer | 德玛西亚 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/03/24/iOS-UIButton/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/29/iOS-RuntimeUIScreenEdgePanGestureRecognizer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cyt">
@@ -300,7 +300,7 @@
             
             
               
-                iOS-UIButton
+                iOS-UIScreenEdgePanGestureRecognizer
               
             
           </h1>
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-03-24T23:25:27+08:00">
-                2015-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-29T10:07:13+08:00">
+                2017-03-29
               </time>
             
 
@@ -325,28 +325,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -377,8 +355,30 @@
       
 
       
-        <h1 id="iOS-UIButton"><a href="#iOS-UIButton" class="headerlink" title="iOS-UIButton"></a>iOS-UIButton</h1><p>griehgrongrognov</p>
-
+        <h1 id="使用runtime实现侧滑pop效果-ios黑魔法"><a href="#使用runtime实现侧滑pop效果-ios黑魔法" class="headerlink" title="使用runtime实现侧滑pop效果-ios黑魔法"></a>使用runtime实现侧滑pop效果-ios黑魔法</h1><p>##第一步:配置实现黑魔法<br>在项目中如果每个相同的类中要实现相同的代码,如果需求不改,那万事大吉,如果需要改动一个方法,每个一个类中都需要改动一下,那就呵呵了.</p>
+<ul>
+<li>1.创建一个UIVIewController的类别</li>
+<li>2.使用runtime,导入头文件#import <objc runtime.h=""></objc></li>
+<li>3.创建一个load方法;获取都走viewdidload方法的对象</li>
+<li><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">void</span>)load</div><div class="line">&#123;</div><div class="line">    SEL systemDidLoadSel = <span class="meta">@selector</span>(viewDidLoad);</div><div class="line">    SEL customDidLoadSel = <span class="meta">@selector</span>(swizzleviewDidLoad);</div><div class="line">    </div><div class="line">    [UIViewController <span class="string">swizzleSystemSel:</span>systemDidLoadSel <span class="string">implementationCustomSel:</span>customDidLoadSel];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>4.runtime的一个代码的封装处理</p>
+</li>
+</ul>
+<figure class="highlight monkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">+ (void)swizzleSystemSel:(SEL)systemSel implementationCustomSel:(SEL)customSel</div><div class="line">&#123;</div><div class="line">    <span class="class"><span class="keyword">Class</span> <span class="title">cls</span> = [<span class="title">self</span> <span class="title">class</span>];</span></div><div class="line">    <span class="function"><span class="keyword">Method</span> <span class="title">systemMethod</span> =</span>class_getInstanceMethod(cls, systemSel);</div><div class="line">    <span class="function"><span class="keyword">Method</span> <span class="title">customMethod</span> =</span>class_getInstanceMethod(cls, customSel);</div><div class="line">    </div><div class="line">    // BOOL class_addMethod(<span class="class"><span class="keyword">Class</span> <span class="title">cls</span>, <span class="title">SEL</span> <span class="title">name</span>, <span class="title">IMP</span> <span class="title">imp</span>,<span class="title">const</span> <span class="title">char</span> *<span class="title">types</span>) <span class="title">cls</span>被添加方法的类，<span class="title">name</span>: 被增加<span class="title">Method</span>的<span class="title">name</span>, <span class="title">imp</span> 被添加的<span class="title">Method</span>的实现函数，<span class="title">types</span>被添加<span class="title">Method</span>的实现函数的返回类型和参数的字符串</span></div><div class="line">    BOOL didAddMethod = class_addMethod(cls, systemSel, method_getImplementation(customMethod), method_getTypeEncoding(customMethod));</div><div class="line">    <span class="keyword">if</span> (didAddMethod)</div><div class="line">    &#123;</div><div class="line">        class_replaceMethod(cls, customSel, method_getImplementation(systemMethod), method_getTypeEncoding(customMethod));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        method_exchangeImplementations(systemMethod, customMethod);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>5 封装结束,开始进行方法的处理</li>
+</ul>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-(<span class="literal">void</span>)swizzleviewDidLoad&#123;</div><div class="line"><span class="comment">//此处可以写你需要的方法</span></div><div class="line">    <span class="meta">[</span><span class="built_in">self</span> creactRightGesture<span class="meta">]</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##第二步:实现侧滑方法<br>在项目的工程中,每个界面都要实现左侧划返回上个界面的效果,如果在每个ViewController中都使用UIScreenEdgePanGestureRecognizer的话,代码量大,管理麻烦(已经踩过坑了);</p>
+<ul>
+<li>1.创建优化手势</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#pragma mark 右滑返回上一级_________</span></div><div class="line"><span class="comment">///右滑返回上一级</span></div><div class="line">-(<span class="keyword">void</span>)creactRightGesture&#123;</div><div class="line">    <span class="keyword">id</span> target = <span class="keyword">self</span>.navigationController.interactivePopGestureRecognizer.delegate;</div><div class="line">    <span class="built_in">UIScreenEdgePanGestureRecognizer</span> *leftEdgeGesture = [[<span class="built_in">UIScreenEdgePanGestureRecognizer</span> alloc] initWithTarget:target action:<span class="keyword">@selector</span>(handleNavigationTransition:)];</div><div class="line">    leftEdgeGesture.edges = <span class="built_in">UIRectEdgeLeft</span>;</div><div class="line">    leftEdgeGesture.delegate = <span class="keyword">self</span>;</div><div class="line">    [<span class="keyword">self</span>.view addGestureRecognizer:leftEdgeGesture];</div><div class="line">    <span class="keyword">self</span>.navigationController.interactivePopGestureRecognizer.enabled = <span class="literal">NO</span>;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>2.实现系统方法,筛选出自己的手势方法,避免冲突:</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizerShouldBegin:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)handleNavigationTransition:(<span class="built_in">UIScreenEdgePanGestureRecognizer</span> *)pan&#123;</div><div class="line">    [<span class="keyword">self</span>.navigationController popViewControllerAnimated:<span class="literal">YES</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -405,12 +405,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/UIButton/" rel="tag"># UIButton</a>
-          
-        </div>
-      
 
       
         
@@ -420,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/03/23/HTML5-Learn01/" rel="next" title="HTML5-Learn01">
-                <i class="fa fa-chevron-left"></i> HTML5-Learn01
+              <a href="/2017/03/24/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -429,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/24/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -561,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-UIButton"><span class="nav-number">1.</span> <span class="nav-text">iOS-UIButton</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用runtime实现侧滑pop效果-ios黑魔法"><span class="nav-number">1.</span> <span class="nav-text">使用runtime实现侧滑pop效果-ios黑魔法</span></a></li></ol></div>
             
 
           </div>
