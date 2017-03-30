@@ -1,0 +1,749 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="#UIScollView
+##创建一个简单的UIScollView在viewDidLoad中实现如下代码
+1234567UIScrollView *scroll = [[UIScrollView alloc]init];scroll.frame = self.view.frame;  //设置代理  scroll.delegate = self;  scroll.backgroundColor=[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小小的天有大大的梦想">
+<meta property="og:url" content="http://yoursite.com/2017/03/30/iOS-UIScrollVIew/index.html">
+<meta property="og:site_name" content="小小的天有大大的梦想">
+<meta property="og:description" content="#UIScollView
+##创建一个简单的UIScollView在viewDidLoad中实现如下代码
+1234567UIScrollView *scroll = [[UIScrollView alloc]init];scroll.frame = self.view.frame;  //设置代理  scroll.delegate = self;  scroll.backgroundColor=[">
+<meta property="og:updated_time" content="2017-03-30T14:25:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小小的天有大大的梦想">
+<meta name="twitter:description" content="#UIScollView
+##创建一个简单的UIScollView在viewDidLoad中实现如下代码
+1234567UIScrollView *scroll = [[UIScrollView alloc]init];scroll.frame = self.view.frame;  //设置代理  scroll.delegate = self;  scroll.backgroundColor=[">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/30/iOS-UIScrollVIew/"/>
+
+
+
+
+
+  <title>  | 小小的天有大大的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小小的天有大大的梦想</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/30/iOS-UIScrollVIew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cyt">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小小的天有大大的梦想">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-30T22:25:33+08:00">
+                2017-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#UIScollView</p>
+<p>##创建一个简单的UIScollView<br>在viewDidLoad中实现如下代码</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">UIScrollView *<span class="keyword">scroll</span> = [[UIScrollView alloc]init];</div><div class="line"><span class="keyword">scroll</span>.frame = self.<span class="built_in">view</span>.frame;</div><div class="line">  <span class="comment">//设置代理</span></div><div class="line">  <span class="keyword">scroll</span>.delegate = self;</div><div class="line">  <span class="keyword">scroll</span>.backgroundColor=[UIColor redColor];<span class="comment">//设置颜色</span></div><div class="line"></div><div class="line">  [self.<span class="built_in">View</span> addSubView:<span class="keyword">scroll</span>];</div></pre></td></tr></table></figure>
+<p>实现代理:UIScrollViewDelegate</p>
+<ul>
+<li>-(void)scrollViewDidScroll:(UIScrollView *)scrollView; //scrollView已经开始滑动</li>
+<li><ul>
+<li>(void)scrollViewDidZoom:(UIScrollView *)scrollView;//开始缩放  放大或缩小</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;将要开始滑动</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;//scrollVIew已经结束滑动</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView;  //将要开始减速</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;  //已经结束减速</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;//滑动的动画已经结束</li>
+</ul>
+</li>
+<li><ul>
+<li>(BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView;//返回yes的时候,返回到顶部 同理还有一个属性scrollsToTop=YES时,避免头部出现空白视图;</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)scrollViewWillBeginZooming:(UIScrollView <em>)scrollView withView:(nullable UIView </em>)view;//将要开始缩放<br>##一个实现图片缩放的简单代码</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">- (<span class="keyword">void</span>)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="comment">//模拟器上实现缩放 点option</span></div><div class="line">    <span class="built_in">UIScrollView</span> *scroll = [[<span class="built_in">UIScrollView</span> alloc]init];</div><div class="line">    scroll.frame = <span class="keyword">self</span>.view.frame;</div><div class="line">    <span class="comment">//设置代理</span></div><div class="line">    scroll.delegate = <span class="keyword">self</span>;</div><div class="line">    scroll.backgroundColor=[<span class="built_in">UIColor</span> redColor];</div><div class="line">    [<span class="keyword">self</span>.view addSubview:scroll];</div><div class="line">    <span class="comment">//最大缩放比例</span></div><div class="line">    scroll.maximumZoomScale = <span class="number">3.0</span>;</div><div class="line">    <span class="comment">//最小缩放比例</span></div><div class="line">    scroll.minimumZoomScale = <span class="number">0.5</span>;</div><div class="line">    </div><div class="line">    </div><div class="line">    _imgview = [[<span class="built_in">UIImageView</span> alloc]init];</div><div class="line">    _imgview.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">320</span>, <span class="number">480</span>);</div><div class="line">    _imgview.image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"sun.png"</span>];</div><div class="line">    [scroll addSubview:_imgview];</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">	<span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line"> 实现缩放的3步:</div><div class="line"> 1.设置最大缩放比例要大于最小缩放比例</div><div class="line"> 2.设置代理</div><div class="line"> 3.实现协议方法viewForZoomoingInScrollView 在这里要返回要进行缩放的子视图</div><div class="line"> */</div><div class="line"></div><div class="line"></div><div class="line">-(<span class="built_in">UIView</span> *)viewForZoomingInScrollView:(<span class="built_in">UIScrollView</span> *)scrollView &#123;</div><div class="line">    <span class="comment">//返回要进行缩放的scrollview的子视图</span></div><div class="line">    <span class="keyword">return</span> _imgview;</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="使用NSTimer和UIScrollVIew实现一个图片轮播器-第一张–-gt-第五张–-gt-第一张"><a href="#使用NSTimer和UIScrollVIew实现一个图片轮播器-第一张–-gt-第五张–-gt-第一张" class="headerlink" title="使用NSTimer和UIScrollVIew实现一个图片轮播器,第一张–&gt;第五张–&gt;第一张"></a>使用NSTimer和UIScrollVIew实现一个图片轮播器,第一张–&gt;第五张–&gt;第一张</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line">.h</div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> : <span class="title">UIViewController</span>&lt;<span class="title">UIScrollViewDelegate</span>&gt;</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> _speed;<span class="comment">//记录方向</span></div><div class="line">    <span class="built_in">UIScrollView</span> *_scroll;<span class="comment">//</span></div><div class="line">    <span class="built_in">NSTimer</span> *_timer;<span class="comment">//计时器</span></div><div class="line">    </div><div class="line">   </div><div class="line">    <span class="keyword">float</span> _offsetStartDrag; <span class="comment">//开始拖动时,偏移量大小</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line">.m</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    </div><div class="line">    <span class="built_in">UIScrollView</span> *scroll = [[<span class="built_in">UIScrollView</span> alloc]init];</div><div class="line">    scroll.delegate = <span class="keyword">self</span>;</div><div class="line">    scroll.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">320</span>, <span class="number">480</span>);</div><div class="line">    [<span class="keyword">self</span>.view addSubview:scroll];</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++) &#123;</div><div class="line">        <span class="built_in">UIImageView</span> *imgview = [[<span class="built_in">UIImageView</span> alloc]init];</div><div class="line">        imgview.frame = <span class="built_in">CGRectMake</span>(<span class="number">320</span>*i, <span class="number">0</span>, <span class="number">320</span>, <span class="number">480</span>);</div><div class="line">        imgview.image = [<span class="built_in">UIImage</span> imageNamed:[<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"fight%d"</span>,i+<span class="number">1</span>]];</div><div class="line">        [scroll addSubview:imgview];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    scroll.contentSize = <span class="built_in">CGSizeMake</span>(<span class="number">320</span>*<span class="number">5</span>, <span class="number">480</span>);</div><div class="line">    scroll.pagingEnabled = <span class="literal">YES</span>;</div><div class="line">    _scroll = scroll;</div><div class="line">    </div><div class="line">    </div><div class="line">    _timer = [<span class="built_in">NSTimer</span> scheduledTimerWithTimeInterval:<span class="number">2.0</span> target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(onTimer) userInfo:<span class="literal">nil</span> repeats:<span class="literal">YES</span>];</div><div class="line">    _speed = <span class="number">320</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)onTimer &#123;</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">float</span> offset = _scroll.contentOffset.x;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (offset &gt;= <span class="number">320</span>*<span class="number">4</span>) &#123;</div><div class="line">        <span class="comment">//已经到达最右边</span></div><div class="line">        _speed = <span class="number">-320</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (offset &lt;= <span class="number">0</span>)&#123;</div><div class="line">        <span class="comment">//已经到达最左边</span></div><div class="line">        _speed = <span class="number">320</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    offset += _speed;</div><div class="line">    </div><div class="line">    [_scroll setContentOffset:<span class="built_in">CGPointMake</span>(offset, <span class="number">0</span>) animated:<span class="literal">YES</span>];</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)scrollViewWillBeginDragging:(<span class="built_in">UIScrollView</span> *)scrollView &#123;</div><div class="line">    <span class="comment">//当用户开始拖动scrollview时,让定时器暂停</span></div><div class="line">    [_timer setFireDate:[<span class="built_in">NSDate</span> distantFuture]];</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment">//记录开始拖动时的偏移量 目的跟结果拖动的偏移量进行比较</span></div><div class="line">    </div><div class="line">    _offsetStartDrag = scrollView.contentOffset.x;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)scrollViewDidEndDragging:(<span class="built_in">UIScrollView</span> *)scrollView willDecelerate:(<span class="built_in">BOOL</span>)decelerate &#123;</div><div class="line">    <span class="comment">//得到结束拖动到偏移量</span></div><div class="line">    <span class="keyword">float</span> offsetEndDrag = scrollView.contentOffset.x;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (_offsetStartDrag &lt;= offsetEndDrag) &#123;</div><div class="line">        <span class="comment">//向右拖动</span></div><div class="line">        _speed = <span class="number">320</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        _speed = <span class="number">-320</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)scrollViewDidEndDecelerating:(<span class="built_in">UIScrollView</span> *)scrollView &#123;</div><div class="line">    <span class="comment">//当scrollview停止滚动时,2.0秒之后重新开启定时器</span></div><div class="line">    [_timer setFireDate:[<span class="built_in">NSDate</span> dateWithTimeIntervalSinceNow:<span class="number">2.0</span>]];</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>###配合图片轮播的一个黄金搭档-UIPageControl</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">初始化创建</div><div class="line">_pgctl = [[<span class="built_in">UIPageControl</span> alloc]init];</div><div class="line">    _pgctl.backgroundColor = [<span class="built_in">UIColor</span> redColor];<span class="comment">//</span></div><div class="line">    _pgctl.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">20</span>, <span class="number">320</span>, <span class="number">20</span>);</div><div class="line">    _pgctl.numberOfPages = <span class="number">5</span>;<span class="comment">//显示的页码个数</span></div><div class="line">    [_pgctl addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(onPgctlClick) forControlEvents:<span class="built_in">UIControlEventValueChanged</span>];<span class="comment">//点击时绑定的方法</span></div><div class="line">    [<span class="keyword">self</span>.view addSubview:_pgctl];</div><div class="line">    </div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)onPgctlClick &#123;<span class="comment">//实现方法</span></div><div class="line">   [_timer setFireDate:[<span class="built_in">NSDate</span> distantFuture]];<span class="comment">//将计时器关闭</span></div><div class="line">    <span class="keyword">float</span> offset = _pgctl.currentPage*<span class="number">320</span>;<span class="comment">//记录点击时scroll需要的偏移量</span></div><div class="line">    </div><div class="line">    [_scroll setContentOffset:<span class="built_in">CGPointMake</span>(offset, <span class="number">0</span>) animated:<span class="literal">YES</span>];<span class="comment">//将scroll滑动到指定的位置;</span></div><div class="line">    </div><div class="line">    [<span class="keyword">self</span> performSelector:<span class="keyword">@selector</span>(timerreStart) withObject:<span class="literal">nil</span> afterDelay:<span class="number">2.0</span>];<span class="comment">//两秒之后执行计时器;</span></div><div class="line">    <span class="comment">/*performSelector的使用理解请结合runtime特性:</span></div><div class="line">    它要执行的方法在编译接单,如果没有实现,是不会报错的,但是执行时会崩溃,还有runLoop.... */</div><div class="line">&#125;</div><div class="line"><span class="meta">#pragma mark 启动计时器的方法</span></div><div class="line">-(<span class="keyword">void</span>)timerreStart &#123;</div><div class="line">    [_timer setFireDate:[<span class="built_in">NSDate</span> dateWithTimeIntervalSinceNow:<span class="number">1</span>]];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)scrollViewDidEndDecelerating:(<span class="built_in">UIScrollView</span> *)scrollView &#123;</div><div class="line">    <span class="comment">//当scrollview停止滚动时,2.0秒之后重新开启定时器</span></div><div class="line">    [_timer setFireDate:[<span class="built_in">NSDate</span> dateWithTimeIntervalSinceNow:<span class="number">2.0</span>]];</div><div class="line">    </div><div class="line">    </div><div class="line">    _pgctl.currentPage = scrollView.contentOffset.x/<span class="number">320</span>;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)onTimer &#123;<span class="comment">//计时器的绑定方法</span></div><div class="line">    <span class="keyword">float</span> offset = _scroll.contentOffset.x;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (offset &gt;= <span class="number">320</span>*<span class="number">4</span>) &#123;</div><div class="line">        <span class="comment">//已经到达最右边</span></div><div class="line">        _speed = <span class="number">-320</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (offset &lt;= <span class="number">0</span>)&#123;</div><div class="line">        <span class="comment">//已经到达最左边</span></div><div class="line">        _speed = <span class="number">320</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    offset += _speed;</div><div class="line">    </div><div class="line">    [_scroll setContentOffset:<span class="built_in">CGPointMake</span>(offset, <span class="number">0</span>) animated:<span class="literal">YES</span>];</div><div class="line"></div><div class="line">    _pgctl.currentPage = offset/<span class="number">320</span>;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/29/iOS-RuntimeUIScreenEdgePanGestureRecognizer/" rel="next" title="iOS-UIScreenEdgePanGestureRecognizer">
+                <i class="fa fa-chevron-left"></i> iOS-UIScreenEdgePanGestureRecognizer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="cyt" />
+          <p class="site-author-name" itemprop="name">cyt</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用NSTimer和UIScrollVIew实现一个图片轮播器-第一张–-gt-第五张–-gt-第一张"><span class="nav-number">1.</span> <span class="nav-text">使用NSTimer和UIScrollVIew实现一个图片轮播器,第一张–>第五张–>第一张</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cyt</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
