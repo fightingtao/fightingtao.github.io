@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="关键字,关键字" />
+  <meta name="keywords" content="关键字 Swift,关键字 UITableView" />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="文章访问密码">
+<meta name="description" content="菜鸟进化史">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML5-Learn01">
-<meta property="og:url" content="http://yoursite.com/2015/03/23/HTML5-Learn01/index.html">
+<meta property="og:title" content="Swift-UITableView">
+<meta property="og:url" content="http://yoursite.com/2016/03/21/Swift-tableView副本/index.html">
 <meta property="og:site_name" content="小小的天有大大的梦想">
-<meta property="og:description" content="文章访问密码">
-<meta property="og:updated_time" content="2017-03-27T02:56:22.000Z">
+<meta property="og:description" content="菜鸟进化史">
+<meta property="og:updated_time" content="2017-04-05T09:30:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML5-Learn01">
-<meta name="twitter:description" content="文章访问密码">
+<meta name="twitter:title" content="Swift-UITableView">
+<meta name="twitter:description" content="菜鸟进化史">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/03/23/HTML5-Learn01/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/03/21/Swift-tableView副本/"/>
 
 
 
 
 
-  <title> HTML5-Learn01 | 小小的天有大大的梦想 </title>
+  <title> Swift-UITableView | 小小的天有大大的梦想 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/03/23/HTML5-Learn01/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/21/Swift-tableView副本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cyt">
@@ -300,7 +300,7 @@
             
             
               
-                HTML5-Learn01
+                Swift-UITableView
               
             
           </h1>
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-03-23T23:29:23+08:00">
-                2015-03-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-21T13:25:27+08:00">
+                2016-03-21
               </time>
             
 
@@ -338,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML5</span>
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
                   </a>
                 </span>
 
@@ -362,7 +362,7 @@
 
           
               <div class="post-description">
-                  文章访问密码
+                  菜鸟进化史
               </div>
           
 
@@ -377,7 +377,9 @@
       
 
       
-        <h1 id="Learn01"><a href="#Learn01" class="headerlink" title="Learn01"></a>Learn01</h1>
+        <h1 id="Swift-UITableView"><a href="#Swift-UITableView" class="headerlink" title="Swift-UITableView"></a>Swift-UITableView</h1><p>直接上代码:</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="literal">self</span>.<span class="built_in">table</span>View = UITableView(frame: CGRect(x:<span class="number">0.0</span>, y:<span class="number">0.0</span>,width: <span class="number">320</span>,height: <span class="number">520</span>), style: UITableViewStyle.plain)</div><div class="line">        <span class="literal">self</span>.<span class="built_in">table</span>View.delegate = <span class="literal">self</span></div><div class="line">        <span class="literal">self</span>.<span class="built_in">table</span>View.dataSource = <span class="literal">self</span></div><div class="line">        <span class="literal">self</span>.<span class="built_in">table</span>View.<span class="built_in">table</span>FooterView = UIView()</div><div class="line">        <span class="literal">self</span>.<span class="built_in">table</span>View.rowHeight = <span class="number">80</span></div><div class="line">        view.addSubview(<span class="literal">self</span>.<span class="built_in">table</span>View)</div><div class="line">        <span class="built_in">table</span>View.register(UITableViewCell.<span class="literal">self</span>, <span class="keyword">for</span>CellReuseIdentifier: <span class="string">"cell"</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//扩展</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span> : <span class="title">UITableViewDataSource</span>,<span class="title">UITableViewDelegate</span>,<span class="title">tableviewdelgate</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">10</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, heightForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">90</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        <span class="keyword">var</span> cell  = tableView.dequeueReusableCell(withIdentifier: <span class="string">"cell"</span>,<span class="keyword">for</span>:indexPath)</div><div class="line">        <span class="keyword">if</span> cell.isEqual(<span class="literal">nil</span>) &#123;</div><div class="line">            cell = <span class="type">TableViewCell</span>(style: <span class="type">UITableViewCellStyle</span>.<span class="keyword">default</span>, reuseIdentifier: <span class="string">"cell"</span>)</div><div class="line">        &#125;</div><div class="line">        cell.textLabel?.text=<span class="string">"真是麻烦"</span></div><div class="line">        cell.backgroundColor=<span class="type">UIColor</span>.red</div><div class="line">        cell.selectionStyle = .<span class="keyword">none</span></div><div class="line">        <span class="comment">//        cell.strr="dferfrfr"</span></div><div class="line">        <span class="comment">//        cell.delegate=self</span></div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        </div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">thisCellIsGood</span><span class="params">(name:NSString)</span></span>&#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -406,7 +408,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Learn01/" rel="tag"># Learn01</a>
+            <a href="/tags/UITableView/" rel="tag"># UITableView</a>
           
         </div>
       
@@ -419,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/03/22/iOS-UITableView/" rel="next" title="iOS-UITableView">
-                <i class="fa fa-chevron-left"></i> iOS-UITableView
+              <a href="/2015/03/24/iOS-UIButton/" rel="next" title="iOS-UIButton">
+                <i class="fa fa-chevron-left"></i> iOS-UIButton
               </a>
             
           </div>
@@ -429,8 +431,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/03/24/iOS-UIButton/" rel="prev" title="iOS-UIButton">
-                iOS-UIButton <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/21/Swift-Navgation/" rel="prev" title="Swift-NSNotification">
+                Swift-NSNotification <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Learn01"><span class="nav-number">1.</span> <span class="nav-text">Learn01</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Swift-UITableView"><span class="nav-number">1.</span> <span class="nav-text">Swift-UITableView</span></a></li></ol></div>
             
 
           </div>
