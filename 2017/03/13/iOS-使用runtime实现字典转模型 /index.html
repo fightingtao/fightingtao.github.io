@@ -1,0 +1,813 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="关键字 iOS,关键字 runtime-DicToModel" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="菜鸟进化史">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-runtime-DicToModel">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/iOS-使用runtime实现字典转模型 /index.html">
+<meta property="og:site_name" content="小小的天有大大的梦想">
+<meta property="og:description" content="菜鸟进化史">
+<meta property="og:updated_time" content="2017-04-07T02:34:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-runtime-DicToModel">
+<meta name="twitter:description" content="菜鸟进化史">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/iOS-使用runtime实现字典转模型 /"/>
+
+
+
+
+
+  <title> iOS-runtime-DicToModel | 小小的天有大大的梦想 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小小的天有大大的梦想</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/iOS-使用runtime实现字典转模型 /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cyt">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小小的天有大大的梦想">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS-runtime-DicToModel
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T23:45:33+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  菜鸟进化史
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Runtime-DicToModel"><a href="#Runtime-DicToModel" class="headerlink" title="Runtime-DicToModel"></a>Runtime-DicToModel</h1><p>①②③④⑤⑥⑨⑪⑫⑬⑮⑯0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟<br>❶❷❸❹❺❻</p>
+<table>
+<thead>
+<tr>
+<th>Runtime-dicToModel</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>1️⃣设计模型</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>①模型属性</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>②自动打印属性字符串</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>2️⃣字典转模型2种方式</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>① ①M1:KVC</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>❶M1:DicToModel</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>❷M1分析</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>②M2:Runtime</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>3️⃣Other</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="1️⃣设计模型"><a href="#1️⃣设计模型" class="headerlink" title="1️⃣设计模型"></a>1️⃣设计模型</h1><h2 id="①模型属性"><a href="#①模型属性" class="headerlink" title="①模型属性"></a>①模型属性</h2><p>模型属性，通常需要跟字典中的key一一对应<br>提供一个分类，专门根据字典生成对应的属性字符串，能自动根据一个字典，生成对应的属性</p>
+<h2 id="②自动打印属性字符串"><a href="#②自动打印属性字符串" class="headerlink" title="②自动打印属性字符串"></a>②自动打印属性字符串</h2><figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">void</span>)resolveDict:(NSDictionary *)dict&#123;</div><div class="line">    <span class="comment">//拼接属性字符串代码</span></div><div class="line">    NSMutableString *strM = [NSMutableString string];</div><div class="line">    <span class="comment">// 1.遍历字典，把字典中的所有key取出来，生成对应的属性代码</span></div><div class="line">    [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) &#123;</div><div class="line">        <span class="comment">// 类型经常变，抽出来</span></div><div class="line">         NSString *<span class="class"><span class="keyword">type</span>;</span></div><div class="line">        <span class="keyword">if</span> ([obj isKindOfClass:NSClassFromString(<span class="string">@"__NSCFString"</span>)]) &#123;</div><div class="line">            <span class="class"><span class="keyword">type</span> </span>= <span class="string">@"NSString"</span>;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> ([obj isKindOfClass:NSClassFromString(<span class="string">@"__NSCFArray"</span>)])&#123;</div><div class="line">            <span class="class"><span class="keyword">type</span> </span>= <span class="string">@"NSArray"</span>;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> ([obj isKindOfClass:NSClassFromString(<span class="string">@"__NSCFNumber"</span>)])&#123;</div><div class="line">            <span class="class"><span class="keyword">type</span> </span>= <span class="string">@"int"</span>;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> ([obj isKindOfClass:NSClassFromString(<span class="string">@"__NSCFDictionary"</span>)])&#123;</div><div class="line">            <span class="class"><span class="keyword">type</span> </span>= <span class="string">@"NSDictionary"</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 属性字符串</span></div><div class="line">        NSString *str;</div><div class="line">        <span class="keyword">if</span> ([<span class="class"><span class="keyword">type</span> <span class="title">containsString</span>:@"<span class="title">NS</span>"]) &#123;</span></div><div class="line">            str = [NSString stringWithFormat:<span class="string">@"@property (nonatomic, strong) %@ *%@;"</span>,<span class="class"><span class="keyword">type</span>,<span class="title">key</span>];</span></div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            str = [NSString stringWithFormat:<span class="string">@"@property (nonatomic, assign) %@ %@;"</span>,<span class="class"><span class="keyword">type</span>,<span class="title">key</span>];</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 每生成属性字符串，就自动换行。</span></div><div class="line">        [strM appendFormat:<span class="string">@"\n%@\n"</span>,str];</div><div class="line">    &#125;];</div><div class="line">    <span class="comment">// 把拼接好的字符串打印出来，就好了。</span></div><div class="line">    NSLog(<span class="string">@"%@"</span>,strM);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="2️⃣字典转模型2种方式"><a href="#2️⃣字典转模型2种方式" class="headerlink" title="2️⃣字典转模型2种方式"></a>2️⃣字典转模型2种方式</h1><h2 id="①M1-KVC"><a href="#①M1-KVC" class="headerlink" title="①M1:KVC"></a>①M1:KVC</h2><h3 id="❶M1-DicToModel"><a href="#❶M1-DicToModel" class="headerlink" title="❶M1:DicToModel"></a>❶M1:DicToModel</h3><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)statusWithDict:(NSDictionary *)dict</div><div class="line">&#123;</div><div class="line">    <span class="keyword">Status</span> *<span class="keyword">status</span> = [[self alloc] init];</div><div class="line">    [<span class="keyword">status</span> setValuesForKeysWithDictionary:dict];</div><div class="line">    <span class="keyword">return</span> <span class="keyword">status</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="❷M1分析"><a href="#❷M1分析" class="headerlink" title="❷M1分析"></a>❷M1分析</h3><p>1.KVC字典转模型弊端：<br>    必须保证，模型中的属性和字典中的key一一对应。如果不一致，就会报错。<br>2.分析<br>      模型中的属性和字典的key不一一对应，系统就会调用setValue:forUndefinedKey:报错。<br>3.重写方法解决<br>  重写对象的setValue:forUndefinedKey:,把系统的方法覆盖，就能继续使用KVC，字典转模型了。</p>
+<h2 id="❶❷M2-Runtime"><a href="#❶❷M2-Runtime" class="headerlink" title="❶❷M2:Runtime"></a>❶❷M2:Runtime</h2><h2 id="❶思路"><a href="#❶思路" class="headerlink" title="❶思路"></a>❶思路</h2><pre><code>利用运行时，遍历模型中所有属性，根据模型的属性名，去字典中查找key，取出对应的值，给模型的属性赋值。
+</code></pre><h2 id="❷步骤："><a href="#❷步骤：" class="headerlink" title="❷步骤："></a>❷步骤：</h2><pre><code>提供一个NSObject分类，专门字典转模型，以后所有模型都可以通过这个分类转。
+</code></pre><p>实现代码：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">    </div><div class="line">    <span class="comment">//1.解析Plist文件</span></div><div class="line">    <span class="built_in">NSString</span> *filePath = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"status.plist"</span> </div><div class="line">                                                        ofType:<span class="literal">nil</span>];</div><div class="line">    <span class="comment">//2.</span></div><div class="line">    <span class="built_in">NSDictionary</span> *statusDict = [<span class="built_in">NSDictionary</span> dictionaryWithContentsOfFile:filePath];</div><div class="line">    <span class="comment">//3.获取字典数组</span></div><div class="line">    <span class="built_in">NSArray</span> *dictArr = statusDict[<span class="string">@"statuses"</span>];</div><div class="line">    <span class="comment">//4.自动生成模型的属性字符串</span></div><div class="line">    <span class="comment">//[NSObject resolveDict:dictArr[0][@"user"]];</span></div><div class="line">    _statuses = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">    <span class="comment">//5.遍历字典数组</span></div><div class="line">    <span class="keyword">for</span> (<span class="built_in">NSDictionary</span> *dict <span class="keyword">in</span> dictArr) &#123;</div><div class="line">        Status *status = [Status modelWithDict:dict];</div><div class="line">        [_statuses addObject:status];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//6.测试数据</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ %@"</span>,_statuses,[_statuses[<span class="number">0</span>] user]);</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSObject</span> (<span class="title">Model</span>)</span></div><div class="line">+ (<span class="keyword">instancetype</span>)modelWithDict:(<span class="built_in">NSDictionary</span> *)dict</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 思路：遍历模型中所有属性-》使用运行时</span></div><div class="line">    <span class="comment">// 0.创建对应的对象</span></div><div class="line">    <span class="keyword">id</span> objc = [[<span class="keyword">self</span> alloc] init];</div><div class="line">    <span class="comment">// 1.利用runtime给对象中的成员属性赋值</span></div><div class="line">    <span class="comment">// class_copyIvarList:获取类中的所有成员属性</span></div><div class="line">    <span class="comment">// Ivar：成员属性的意思</span></div><div class="line">    <span class="comment">// 第一个参数：表示获取哪个类中的成员属性</span></div><div class="line">    <span class="comment">// 第二个参数：表示这个类有多少成员属性，传入一个Int变量地址，会自动给这个变量赋值</span></div><div class="line">    <span class="comment">// 返回值Ivar *：指的是一个ivar数组，会把所有成员属性放在一个数组中，通过返回的数组就能全部获取到。</span></div><div class="line">    <span class="comment">/* 类似下面这种写法</span></div><div class="line">     Ivar ivar;</div><div class="line">     Ivar ivar1;</div><div class="line">     Ivar ivar2;</div><div class="line">     // 定义一个ivar的数组a</div><div class="line">     Ivar a[] = &#123;ivar,ivar1,ivar2&#125;;</div><div class="line">     // 用一个Ivar *指针指向数组第一个元素</div><div class="line">     Ivar *ivarList = a;</div><div class="line">     // 根据指针访问数组第一个元素</div><div class="line">     ivarList[0];</div><div class="line">     */</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> count;</div><div class="line">    <span class="comment">// 获取类中的所有成员属性</span></div><div class="line">    Ivar *ivarList = class_copyIvarList(<span class="keyword">self</span>, &amp;count);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">        <span class="comment">// 根据角标，从数组取出对应的成员属性</span></div><div class="line">        Ivar ivar = ivarList[i];</div><div class="line">        <span class="comment">// 获取成员属性名</span></div><div class="line">        <span class="built_in">NSString</span> *name = [<span class="built_in">NSString</span> stringWithUTF8String:ivar_getName(ivar)];</div><div class="line">        <span class="comment">// 处理成员属性名-&gt;字典中的key</span></div><div class="line">        <span class="comment">// 从第一个角标开始截取</span></div><div class="line">        <span class="built_in">NSString</span> *key = [name substringFromIndex:<span class="number">1</span>];</div><div class="line">        <span class="comment">// 根据成员属性名去字典中查找对应的value</span></div><div class="line">        <span class="keyword">id</span> value = dict[key];</div><div class="line">        <span class="comment">// 二级转换:如果字典中还有字典，也需要把对应的字典转换成模型</span></div><div class="line">        <span class="comment">// 判断下value是否是字典</span></div><div class="line">        <span class="keyword">if</span> ([value isKindOfClass:[<span class="built_in">NSDictionary</span> <span class="keyword">class</span>]]) &#123;</div><div class="line">            <span class="comment">// 字典转模型</span></div><div class="line">            <span class="comment">// 获取模型的类对象，调用modelWithDict</span></div><div class="line">            <span class="comment">// 模型的类名已知，就是成员属性的类型</span></div><div class="line">            <span class="comment">// 获取成员属性类型</span></div><div class="line">           <span class="built_in">NSString</span> *type = [<span class="built_in">NSString</span> stringWithUTF8String:ivar_getTypeEncoding(ivar)];</div><div class="line">          <span class="comment">// 生成的是这种@"@\"User\"" 类型 -》 @"User"  在OC字符串中 \" -&gt; "，\是转义的意思，不占用字符</span></div><div class="line">            <span class="comment">// 裁剪类型字符串</span></div><div class="line">            <span class="built_in">NSRange</span> range = [type rangeOfString:<span class="string">@"\""</span>];</div><div class="line">           type = [type substringFromIndex:range.location + range.length];</div><div class="line">            range = [type rangeOfString:<span class="string">@"\""</span>];</div><div class="line">            <span class="comment">// 裁剪到哪个角标，不包括当前角标</span></div><div class="line">          type = [type substringToIndex:range.location];</div><div class="line">            <span class="comment">// 根据字符串类名生成类对象</span></div><div class="line">            Class modelClass = <span class="built_in">NSClassFromString</span>(type);</div><div class="line">            <span class="keyword">if</span> (modelClass) &#123; <span class="comment">// 有对应的模型才需要转</span></div><div class="line">                <span class="comment">// 把字典转模型</span></div><div class="line">                value  =  [modelClass modelWithDict:value];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 三级转换：NSArray中也是字典，把数组中的字典转换成模型.</span></div><div class="line">        <span class="comment">// 判断值是否是数组</span></div><div class="line">        <span class="keyword">if</span> ([value isKindOfClass:[<span class="built_in">NSArray</span> <span class="keyword">class</span>]]) &#123;</div><div class="line">            <span class="comment">// 判断对应类有没有实现字典数组转模型数组的协议</span></div><div class="line">            <span class="keyword">if</span> ([<span class="keyword">self</span> respondsToSelector:<span class="keyword">@selector</span>(arrayContainModelClass)]) &#123;</div><div class="line">                <span class="comment">// 转换成id类型，就能调用任何对象的方法</span></div><div class="line">                <span class="keyword">id</span> idSelf = <span class="keyword">self</span>;</div><div class="line">                <span class="comment">// 获取数组中字典对应的模型</span></div><div class="line">                <span class="built_in">NSString</span> *type =  [idSelf arrayContainModelClass][key];</div><div class="line"></div><div class="line">                <span class="comment">// 生成模型</span></div><div class="line">               Class classModel = <span class="built_in">NSClassFromString</span>(type);</div><div class="line">                <span class="built_in">NSMutableArray</span> *arrM = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">                <span class="comment">// 遍历字典数组，生成模型数组</span></div><div class="line">                <span class="keyword">for</span> (<span class="built_in">NSDictionary</span> *dict <span class="keyword">in</span> value) &#123;</div><div class="line">                    <span class="comment">// 字典转模型</span></div><div class="line">                  <span class="keyword">id</span> model =  [classModel modelWithDict:dict];</div><div class="line">                    [arrM addObject:model];</div><div class="line">                &#125;</div><div class="line">                <span class="comment">// 把模型数组赋值给value</span></div><div class="line">                value = arrM;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (value) &#123; <span class="comment">// 有值，才需要给模型的属性赋值</span></div><div class="line">            <span class="comment">// 利用KVC给模型中的属性赋值</span></div><div class="line">            [objc setValue:value forKey:key];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> objc;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<h1 id="3️⃣Other"><a href="#3️⃣Other" class="headerlink" title="3️⃣Other"></a>3️⃣Other</h1><p>实现字典和模型的自动转换：首先要根据模型的实现模型。。。。。。。<br>(核心就是可以遍历出字典中的每个属性,json解析中大牛框架都用了这个特性,包括MJEXtension,YYModel，jsonModel都是将json转换为字典,再遍历字典中的每个属性来进行modle的转换)。</p>
+<p>基本上主流的json 转model 都少不了,使用运行时动态获取属性的属性名的方法,来进行字典转模型替换,字典转模型效率最高的(耗时最短的)的是KVC,其他的字典转模型是在KVC 的key 和Value 做处理,动态的获取json 中的key 和value ,当然转换的过程中,第三方框架需要做一些判空啊,镶嵌的逻辑处理, 再进行KVC 转模型.</p>
+<p>无论JsonModle,YYKIt,MJextension 都少不了[xx setValue:value forKey:key];这句代码的,不信可以去搜,这是字典转模型的核心方法。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/runtime/" rel="tag"># runtime</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/iOS-消息发送和消息转发 /" rel="next" title="iOS-runtime消息发送">
+                <i class="fa fa-chevron-left"></i> iOS-runtime消息发送
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/14/iOS-GCD/" rel="prev" title="iOS-GCD">
+                iOS-GCD <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="cyt" />
+          <p class="site-author-name" itemprop="name">cyt</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Runtime-DicToModel"><span class="nav-number">1.</span> <span class="nav-text">Runtime-DicToModel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1️⃣设计模型"><span class="nav-number">2.</span> <span class="nav-text">1️⃣设计模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#①模型属性"><span class="nav-number">2.1.</span> <span class="nav-text">①模型属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#②自动打印属性字符串"><span class="nav-number">2.2.</span> <span class="nav-text">②自动打印属性字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2️⃣字典转模型2种方式"><span class="nav-number">3.</span> <span class="nav-text">2️⃣字典转模型2种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#①M1-KVC"><span class="nav-number">3.1.</span> <span class="nav-text">①M1:KVC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#❶M1-DicToModel"><span class="nav-number">3.1.1.</span> <span class="nav-text">❶M1:DicToModel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#❷M1分析"><span class="nav-number">3.1.2.</span> <span class="nav-text">❷M1分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❶❷M2-Runtime"><span class="nav-number">3.2.</span> <span class="nav-text">❶❷M2:Runtime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❶思路"><span class="nav-number">3.3.</span> <span class="nav-text">❶思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❷步骤："><span class="nav-number">3.4.</span> <span class="nav-text">❷步骤：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3️⃣Other"><span class="nav-number">4.</span> <span class="nav-text">3️⃣Other</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cyt</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="关键字,关键字" />
+  <meta name="keywords" content="关键字 iOS,关键字 runtime消息发送" />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="文章访问密码">
+<meta name="description" content="菜鸟进化史">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift-UIButton">
-<meta property="og:url" content="http://yoursite.com/2016/03/24/Swift-UIButton/index.html">
+<meta property="og:title" content="iOS-runtime消息发送">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/iOS-消息发送和消息转发 /index.html">
 <meta property="og:site_name" content="小小的天有大大的梦想">
-<meta property="og:description" content="文章访问密码">
-<meta property="og:updated_time" content="2017-04-05T08:51:59.000Z">
+<meta property="og:description" content="菜鸟进化史">
+<meta property="og:updated_time" content="2017-04-07T02:35:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift-UIButton">
-<meta name="twitter:description" content="文章访问密码">
+<meta name="twitter:title" content="iOS-runtime消息发送">
+<meta name="twitter:description" content="菜鸟进化史">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/03/24/Swift-UIButton/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/iOS-消息发送和消息转发 /"/>
 
 
 
 
 
-  <title> Swift-UIButton | 小小的天有大大的梦想 </title>
+  <title> iOS-runtime消息发送 | 小小的天有大大的梦想 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/24/Swift-UIButton/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/iOS-消息发送和消息转发 /">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cyt">
@@ -300,7 +300,7 @@
             
             
               
-                Swift-UIButton
+                iOS-runtime消息发送
               
             
           </h1>
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-24T20:25:27+08:00">
-                2016-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T23:45:33+08:00">
+                2017-03-13
               </time>
             
 
@@ -338,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -362,7 +362,7 @@
 
           
               <div class="post-description">
-                  文章访问密码
+                  菜鸟进化史
               </div>
           
 
@@ -377,7 +377,116 @@
       
 
       
-        <p>1.使用懒加载创建按钮,  代码的封装<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> view.<span class="keyword">addSubview(btn);</span></div><div class="line"></div><div class="line"><span class="symbol">fileprivate</span> lazy var <span class="keyword">btn:UIButton </span>= &#123;</div><div class="line">        </div><div class="line">        let <span class="keyword">btn </span>= UIButton(type: .custom)</div><div class="line">        //<span class="number">2</span>.定义frame</div><div class="line">        <span class="keyword">btn.frame </span>= CGRect(x: <span class="number">50</span>, y: <span class="number">50</span>, width: <span class="number">50</span>, height: <span class="number">50</span>)</div><div class="line">        <span class="keyword">btn.backgroundColor=UIColor.green</span></div><div class="line">        <span class="keyword">btn </span>.setTitle(<span class="string">"这是按钮"</span>, for: .normal)</div><div class="line">        <span class="keyword">btn </span>.<span class="keyword">addTarget(self </span>, action:<span class="symbol">#selector</span>(chushihuaBtn), for: .touchUpInside)</div><div class="line">        return <span class="keyword">btn</span></div><div class="line">    &#125;()</div></pre></td></tr></table></figure></p>
+        <h1 id="1️⃣消息发送"><a href="#1️⃣消息发送" class="headerlink" title="1️⃣消息发送"></a>1️⃣消息发送</h1><p>①②③④⑤⑥⑨⑪⑫⑬⑮⑯0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟<br>❶❷❸❹❺❻</p>
+<table>
+<thead>
+<tr>
+<th>消息发送</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>1️⃣ 消息发送举例</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>①OC代码</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>②编译</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>③objc_msgSend具体流程</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>2️⃣消息转发</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>①消息转发的流程</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>❶动态方法解析</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>❷备胎(后备接收者)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>❸消息签名</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>❹完整的消息转发</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>②消息转发流程-小结</td>
+</tr>
+</tbody>
+</table>
+<h1 id="1️⃣-消息发送举例"><a href="#1️⃣-消息发送举例" class="headerlink" title="1️⃣ 消息发送举例"></a>1️⃣ 消息发送举例</h1><h2 id="①OC代码"><a href="#①OC代码" class="headerlink" title="①OC代码"></a>①OC代码</h2><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="section">[person read:book]</span><span class="comment">;</span></div></pre></td></tr></table></figure>
+<h2 id="②编译"><a href="#②编译" class="headerlink" title="②编译"></a>②编译</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">objc_msgSend</span>(person, <span class="variable">@selector</span>(<span class="attribute">read</span>:), book);</div></pre></td></tr></table></figure>
+<h2 id="③objc-msgSend具体流程"><a href="#③objc-msgSend具体流程" class="headerlink" title="③objc_msgSend具体流程"></a>③objc_msgSend具体流程</h2><p>objc_msgSend的具体流程如下：</p>
+<p>❶通过isa指针找到所属类<br>❷查找类的cache列表, 如果没有则下一步<br>❸查找类的”方法列表”<br>❹如果能找到与选择子名称相符的方法, 就跳至其实现代码<br>❺找不到, 就沿着继承体系继续向上查找<br>❻如果能找到与选择子名称相符的方法, 就跳至其实现代码<br>❼找不到, 执行”消息转发”.</p>
+<h1 id="2️⃣消息转发"><a href="#2️⃣消息转发" class="headerlink" title="2️⃣消息转发"></a>2️⃣消息转发</h1><p>上面我们提到, 如果到最后都找不到, 就会来到消息转发</p>
+<h2 id="①消息转发的流程"><a href="#①消息转发的流程" class="headerlink" title="①消息转发的流程"></a>①消息转发的流程</h2><p>❶动态方法解析 :<br>先问接收者所属的类, 你看能不能动态添加个方法来处理这个”未知的消息”? 如果能, 则消息转发结束.</p>
+<p>❷备胎(后备接收者) :<br>请接收者看看有没有其他对象能处理这条消息? 如果有, 则把消息转给那个对象, 消息转发结束.</p>
+<p>❸消息签名 :<br>这里会要求你返回一个消息签名, 如果返回nil, 则消息转发结束.</p>
+<p>❹完整的消息转发 :<br>备胎都搞不定了, 那就只能把该消息相关的所有细节都封装到一个NSInvocation对象, 再问接收者一次, 快想办法把这个搞定了. 到了这个地步如果还无法处理, 消息转发机制也无能为力了。</p>
+<h3 id="❶动态方法解析"><a href="#❶动态方法解析" class="headerlink" title="❶动态方法解析"></a>❶动态方法解析</h3><p>对象在收到无法解读的消息后, 首先调用其所属类的这个类方法 :</p>
+<ul>
+<li>(BOOL)resolveInstanceMethod:(SEL)selector<br>1.selector : 那个未知的选择子<br>2.返回YES则结束消息转发<br>3.返回NO则进入备胎<br>假如尚未实现的方法不是实例方法而是类方法, 则会调用另一个方法resolveClassMethod:<h3 id="❷备胎"><a href="#❷备胎" class="headerlink" title="❷备胎"></a>❷备胎</h3></li>
+</ul>
+<p>动态方法解析失败, 则调用这个方法</p>
+<ul>
+<li>(id)forwardingTargetForSelector:(SEL)selector<br>1.selector : 那个未知的消息<br>2.返回一个能响应该未知选择子的备胎对象<br>通过备胎这个方法, 可以用”组合”来模拟出”多重继承”.<h3 id="❸消息签名"><a href="#❸消息签名" class="headerlink" title="❸消息签名"></a>❸消息签名</h3></li>
+</ul>
+<p>备胎搞不定, 这个方法就准备要被包装成一个NSInvocation对象, 在这里要先返回一个方法签名</p>
+<ul>
+<li>(NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector<br>// NSMethodSignature : 该selector对应的方法签名</li>
+</ul>
+<h3 id="❹完整的消息转发"><a href="#❹完整的消息转发" class="headerlink" title="❹完整的消息转发"></a>❹完整的消息转发</h3><p>给接收者最后一次机会把这个方法处理了, 搞不定就直接程序崩溃!</p>
+<ul>
+<li>(void)forwardInvocation:(NSInvocation *)invocation<br>// invocation : 封装了与那条尚未处理的消息相关的所有细节的对象<br>在这里能做的比较现实的事就是 : 在触发消息前, 先以某种方式改变消息内容, 比如追加另外一个参数, 或是改变消息等等. 实现此方法时, 如果发现某调用操作不应该由本类处理, 可以调用超类的同名方法. 则继承体系中的每个类都有机会处理该请求, 直到NSObject. 如果NSObject搞不定, 则还会调用doesNotRecognizeSelector:来抛出异常, 此时你就会在控制台看到那熟悉的unrecognized selector sent to instance..</li>
+</ul>
+<h2 id="②消息转发流程-小结"><a href="#②消息转发流程-小结" class="headerlink" title="②消息转发流程-小结"></a>②消息转发流程-小结</h2><p>上面这4个方法均是模板方法，开发者可以override，由runtime来调用。最常见的实现消息转发，就是重写方法3和4，忽略这个消息或者代理给其他对象.<br>哈哈，到这里，有关runtime的理论知识就先告于段落，在下篇文章中，你们要的干货来了—— runtime在实际开发中的应用，跳转链接：点我跳转</p>
 
       
     </div>
@@ -407,7 +516,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UIButton/" rel="tag"># UIButton</a>
+            <a href="/tags/runtime/" rel="tag"># runtime</a>
           
         </div>
       
@@ -420,8 +529,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/22/Swift-function/" rel="next" title="Swift-function">
-                <i class="fa fa-chevron-left"></i> Swift-function
+              <a href="/2017/03/03/HTML5-ajax&select/" rel="next" title="HTML5-ajax&select">
+                <i class="fa fa-chevron-left"></i> HTML5-ajax&select
               </a>
             
           </div>
@@ -430,8 +539,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/21/Swift-UINavergationController/" rel="prev" title="Swift-UINavergationController">
-                Swift-UINavergationController <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/13/iOS-使用runtime实现字典转模型 /" rel="prev" title="iOS-runtime-DicToModel">
+                iOS-runtime-DicToModel <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -479,8 +588,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -542,6 +660,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1️⃣消息发送"><span class="nav-number">1.</span> <span class="nav-text">1️⃣消息发送</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1️⃣-消息发送举例"><span class="nav-number">2.</span> <span class="nav-text">1️⃣ 消息发送举例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#①OC代码"><span class="nav-number">2.1.</span> <span class="nav-text">①OC代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#②编译"><span class="nav-number">2.2.</span> <span class="nav-text">②编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#③objc-msgSend具体流程"><span class="nav-number">2.3.</span> <span class="nav-text">③objc_msgSend具体流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2️⃣消息转发"><span class="nav-number">3.</span> <span class="nav-text">2️⃣消息转发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#①消息转发的流程"><span class="nav-number">3.1.</span> <span class="nav-text">①消息转发的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#❶动态方法解析"><span class="nav-number">3.1.1.</span> <span class="nav-text">❶动态方法解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#❷备胎"><span class="nav-number">3.1.2.</span> <span class="nav-text">❷备胎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#❸消息签名"><span class="nav-number">3.1.3.</span> <span class="nav-text">❸消息签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#❹完整的消息转发"><span class="nav-number">3.1.4.</span> <span class="nav-text">❹完整的消息转发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#②消息转发流程-小结"><span class="nav-number">3.2.</span> <span class="nav-text">②消息转发流程-小结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
